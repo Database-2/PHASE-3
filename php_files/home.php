@@ -1,9 +1,29 @@
 <?php
 include 'config.php';
 session_start();
-
+ // $user_uid = "";
+  //get data and time
+$da = date_default_timezone_set("America/New_York");
+$d = date("Y-m-d h:i:sa");
+        $user_post_1 = $proses_1 = $user_post_err_1 = "";
+        if (isset($_POST['proses'])){
+            $user_post_1 = nl2br($_POST['userpost']); 
+        }if (!strlen(trim($user_post_1))){
+            $user_post_err_1 = "Please enter something.";
+            echo $user_post_err_1;
+        }if(isset($_POST['uid'])){
+            $uwd = $_POST['uid'];
+            }
+if (isset($_POST['mobile']) && $_POST['mobile'] == "android") {
 // Set up user and ids 
-if(!isset($_SESSION['uid'])){
+  $sqla = "INSERT INTO `twitts`(`uid`, `body`, `post_time`)
+  VALUES ('$uwd','$user_post_1','$d')";
+  $resulta = mysqli_query($conn,$sqla);
+        echo "success";
+        exit();
+      
+}else{
+  if(!isset($_SESSION['uid'])){
   header("Location: login.php");
   exit();
 }
@@ -11,9 +31,8 @@ $user_uid = "";
 if(isset($user_uid)){
 $user_uid = $_SESSION['uid'];
 }
-//get data and time
-$da = date_default_timezone_set("America/New_York");
-$d = date("Y-m-d h:i:sa");
+}
+
 
 ?>
 
@@ -197,15 +216,31 @@ $d = date("Y-m-d h:i:sa");
         $user_post = $proses = $user_post_err = "";
         if (isset($_POST['proses'])){
             $user_post = nl2br($_POST['userpost']); 
-        if (!strlen(trim($user_post))){
+        }if (!strlen(trim($user_post))){
             $user_post_err = "<p>Please enter something.</p>";
             echo $user_post_err;
         }else {
+          /*
+              //echo "You are logged in!";
+    if (isset($_POST['mobile']) && $_POST['mobile'] == "android") {
+
+            $sqla = "INSERT INTO `twitts`(`uid`, `body`, `post_time`)
+              VALUES ('uid','$user_post','$d')";
+              $resulta = mysqli_query($conn,$sqla);
+   // $row = mysqli_fetch_assoc($result);
+ 
+        echo "success";
+
+        exit();
+      }
+      else{ 
+        */
             $sqla = "INSERT INTO `twitts`(`uid`, `body`, `post_time`)
               VALUES ('$user_uid','$user_post','$d')";
               $resulta = mysqli_query($conn,$sqla);
-          }        
-        }
+          }
+        //  }        
+        
       // display all users' post 
       $sql ="SELECT username, body, post_time, tid
              FROM

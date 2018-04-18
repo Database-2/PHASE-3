@@ -51,9 +51,16 @@ if ($login) {
 		}else {
 		//echo "You are logged in!";
 		if (isset($_POST['mobile']) && $_POST['mobile'] == "android") {
+		$_SESSION['username']=$username;
+		$sql = "SELECT user.uid
+               FROM `user` 
+               WHERE user.username = '$username'"; 
+        $result = mysqli_query($conn,$sql);
+		$row = mysqli_fetch_assoc($result);
+		$_SESSION['uid']=$row["uid"];
 				echo "success";
+				echo $_SESSION['uid'];
 				exit();
-				# code...
 			}
 			else{	
 		$_SESSION['username']=$username;

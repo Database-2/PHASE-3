@@ -16,6 +16,7 @@ import java.util.HashMap;
 public class loginActivity extends AppCompatActivity implements AsyncResponse {
     EditText user_name, user_password;
     Button btnlogin,btnsignup;
+    public static String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,16 @@ public class loginActivity extends AppCompatActivity implements AsyncResponse {
 
     @Override
     public void processFinish(String result) {
+        //String user_id_REGEX = "[A-Za-z]{1,61} [0-9]";
+        //Log.e("uid",result);
+        String s = result;
+        String first_remove = result.replaceAll("success","");
+        String second_remove = result.replaceAll("[0-9]","");
+        user_id = first_remove;
+        result = second_remove;
+       /// Integer num = Integer.valueOf(user_id);
         if(result.equals("success")) {
-            Toast.makeText(this, "Login Successfully", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Login Successfully " + s , Toast.LENGTH_LONG).show();
             Intent intent = new Intent(loginActivity.this, postActivity.class);
             startActivity(intent);
         }else {
