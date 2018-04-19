@@ -27,4 +27,15 @@
         android:layout_marginTop="117dp"
         android:onClick="PostOnClick"
         android:text="Post" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="164dp"
+        android:layout_marginStart="76dp"
+        android:onClick="PostOnClick"
+        android:text="Button" />
 </RelativeLayout>
