@@ -1,8 +1,8 @@
 package com.example.u.phase_3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,7 +22,7 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
         //user_password = (EditText) findViewById(R.id.passwordField);
         //btnlogin = (Button) findViewById(R.id.loginButton);
 
-        Log.e("uid",loginActivity.user_id);
+        //Log.e("uid",loginActivity.user_id);
 
 
     }
@@ -49,6 +49,10 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
                 //postData.put("pwd",user_password.getText().toString());
                 PostResponseAsyncTask task = new PostResponseAsyncTask(this, postData);
                 task.execute("http://10.0.2.2/PHASE-3/PHASE-3/php_files/home.php");
+                break;
+            case R.id.button:
+                Intent intent = new Intent(postActivity.this, one_four_Q.class);
+                startActivity(intent);
                 break;
         }
     }

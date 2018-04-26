@@ -6,6 +6,7 @@ session_start();
 $da = date_default_timezone_set("America/New_York");
 $d = date("Y-m-d h:i:sa");
         $user_post_1 = $proses_1 = $user_post_err_1 = "";
+        if (isset($_POST['mobile']) && $_POST['mobile'] == "android") {
         if (isset($_POST['proses'])){
             $user_post_1 = nl2br($_POST['userpost']); 
         }if (!strlen(trim($user_post_1))){
@@ -22,7 +23,7 @@ if (isset($_POST['mobile']) && $_POST['mobile'] == "android") {
         echo "success";
         exit();
       
-}else{
+}}else{
   if(!isset($_SESSION['uid'])){
   header("Location: login.php");
   exit();
