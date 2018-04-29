@@ -10,5 +10,8 @@
 
     <string name="reply">Reply</string>
     <string name="delete">Delete</string>
+    <string name="logout">Logout</string>
 
+    <string name="icon_chat">Chat</string>
+    <string name="icon_profile">profile</string>
 </resources>

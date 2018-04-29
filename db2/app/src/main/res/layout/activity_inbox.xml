@@ -4,75 +4,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="189dp"
+    android:layout_height="match_parent"
     tools:context=".inboxActivity">
 
-    <RelativeLayout
-        android:id="@+id/text_container"
+    <ListView
+        android:id="@+id/inboxList"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="99dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical">
+        android:fastScrollEnabled="true"> </ListView>
 
-        <TextView
-            android:id="@+id/sender_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            tools:text="sender" />
-
-        <TextView
-            android:id="@+id/message_time_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:layout_below="@id/sender_text_view"
-            android:layout_weight="1"
-            android:gravity="top"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@android:color/black"
-            tools:text="message time" />
-
-        <TextView
-            android:id="@+id/message_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:layout_below="@id/message_time_text_view"
-            android:layout_weight="1"
-            android:gravity="top"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@android:color/black"
-            tools:text="message" />
-
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_below="@id/message_text_view"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/replyMessage"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:onClick="OnClick"
-                android:text="@string/reply"/>
-
-            <Button
-                android:id="@+id/deleteMessage"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@+id/replyMessage"
-                android:onClick="OnClick"
-                android:text="@string/delete" />
-
-        </LinearLayout>
-    </RelativeLayout>
 </RelativeLayout>

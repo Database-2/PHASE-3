@@ -3,6 +3,8 @@ package com.example.u.phase_3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -55,5 +57,30 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_profile, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            //go to lost and found
+            case R.id.action_chat:
+                goto_chat();
+                return true;
+            case R.id.logout:
+                //logout
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void goto_chat() {
+        Intent intent = new Intent(postActivity.this, inboxActivity.class);
+        startActivity(intent);
     }
 }

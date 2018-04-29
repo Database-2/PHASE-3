@@ -24,6 +24,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".postActivity" />
         <activity android:name=".registerActivity" />
+        <activity android:name=".inboxActivity" />
         <activity android:name=".one_four_Q"></activity>
     </application>
 
