@@ -18,14 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".loginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".loginActivity" />
         <activity android:name=".postActivity" />
         <activity android:name=".registerActivity" />
         <activity android:name=".inboxActivity" />
-        <activity android:name=".one_four_Q"></activity>
+        <activity android:name=".Query_1" />
+        <activity android:name=".first_queriesActivity" />
+        <activity android:name=".Query_2" />
+        <activity android:name=".Query_3" />
+        <activity android:name=".Query_4"></activity>
     </application>
 
 </manifest>

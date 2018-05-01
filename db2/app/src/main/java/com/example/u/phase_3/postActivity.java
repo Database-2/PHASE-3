@@ -53,8 +53,8 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
                 task.execute("http://10.0.2.2/PHASE-3/PHASE-3/php_files/home.php");
                 break;
             case R.id.button:
-                Intent intent = new Intent(postActivity.this, one_four_Q.class);
-                startActivity(intent);
+                //Intent intent = new Intent(postActivity.this, one_four_Q.class);
+                //startActivity(intent);
                 break;
         }
     }

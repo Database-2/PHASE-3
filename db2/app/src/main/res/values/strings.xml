@@ -14,4 +14,11 @@
 
     <string name="icon_chat">Chat</string>
     <string name="icon_profile">profile</string>
+
+    <string name="top">First Five Queries </string>
+
+    <string name="top_query">Queries 1 to 5</string>
+    <string name="first_query">The post that has the most number of likes.</string>
+    <string name="second_query">Who has the most twitter followers?</string>
+    <string name="third_query">Count the number that contains the keyword "flu"?</string>
 </resources>

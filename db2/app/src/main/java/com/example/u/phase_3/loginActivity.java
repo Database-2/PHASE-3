@@ -3,6 +3,8 @@ package com.example.u.phase_3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,8 +16,8 @@ import com.kosalgeek.asynctask.PostResponseAsyncTask;
 import java.util.HashMap;
 
 public class loginActivity extends AppCompatActivity implements AsyncResponse {
-    EditText user_name, user_password;
-    Button btnlogin,btnsignup;
+    private EditText user_name, user_password;
+    private Button btnlogin,btnsignup;
     public static String user_id;
 
     @Override
@@ -26,8 +28,6 @@ public class loginActivity extends AppCompatActivity implements AsyncResponse {
         user_name = (EditText) findViewById(R.id.usernameField);
         user_password = (EditText) findViewById(R.id.passwordField);
         //btnlogin = (Button) findViewById(R.id.loginButton);
-
-
 
     }
 
@@ -67,6 +67,27 @@ public class loginActivity extends AppCompatActivity implements AsyncResponse {
                 goto_sign_up();
                 break;
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            //go to lost and found
+            case R.id.action_top:
+                goto_top();
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void goto_top(){
+        Intent intent = new Intent(loginActivity.this, first_queriesActivity.class);
+        startActivity(intent);
     }
 
     public void goto_sign_up(){
