@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -48,6 +49,7 @@ public class inboxActivity extends AppCompatActivity implements AsyncResponse{
     private ListView listView;
     private JSONObject j;
     private JSONArray result;
+    public static MessageItem replyMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +69,7 @@ public class inboxActivity extends AppCompatActivity implements AsyncResponse{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 MessageItem mi = messages.get(i);
-                showReplyDeleteDialog(mi.getMessage_id(), i);
+                showReplyDeleteDialog(mi.getMessage_id(), mi.getReceiver_id(), mi.getSender_id(), mi.getUserName(), i);
             }
         });
 
@@ -102,7 +104,8 @@ public class inboxActivity extends AppCompatActivity implements AsyncResponse{
         listView.setAdapter(adapter);
     }
 
-    private void showReplyDeleteDialog(final String mkey, final int position){
+    private void showReplyDeleteDialog(final String mkey, final String sender, final String receiver,
+                                       final String _receiverName, final int position){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.delete_and_reply, null);
@@ -118,6 +121,34 @@ public class inboxActivity extends AppCompatActivity implements AsyncResponse{
         buttonReply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AlertDialog.Builder dialogBuilder1 = new AlertDialog.Builder(inboxActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+                final View dialogView = inflater.inflate(R.layout.reply_to_message, null);
+                dialogBuilder1.setView(dialogView);
+
+                final EditText receiverName = (EditText) dialogView.findViewById(R.id.editText2);
+                final EditText messageBody = (EditText) dialogView.findViewById(R.id.editText3);
+                final Button buttonSend = (Button) dialogView.findViewById(R.id.text_mess);
+                receiverName.setText(_receiverName);
+
+                dialogBuilder1.setTitle("REPLY");
+                final AlertDialog c = dialogBuilder1.create();
+                c.show();
+
+                buttonSend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String message = messageBody.getText().toString();
+                        HashMap postData = new HashMap();
+                        postData.put("sender_id",sender);
+                        postData.put("receiver_id",receiver);
+                        postData.put("body",message);
+                        PostResponseAsyncTask task = new PostResponseAsyncTask(inboxActivity.this, postData);
+                        task.execute("http://10.0.2.2/PHASE-3/PHASE-3/php_files/mobile_reply_message.php");
+                        c.dismiss();
+                    }
+                });
+                b.dismiss();
             }
         });
 
