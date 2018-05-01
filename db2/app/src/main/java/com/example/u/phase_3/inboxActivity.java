@@ -1,6 +1,7 @@
 package com.example.u.phase_3;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,12 +50,14 @@ public class inboxActivity extends AppCompatActivity implements AsyncResponse{
     private ListView listView;
     private JSONObject j;
     private JSONArray result;
+    private String receiveName;
     public static MessageItem replyMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbox);
+        setTitle("INBOX");
         //messages = new ArrayList<String>();
         listView = (ListView)findViewById(R.id.inboxList);
         messages = new ArrayList<MessageItem>();
@@ -73,6 +76,41 @@ public class inboxActivity extends AppCompatActivity implements AsyncResponse{
             }
         });
 
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(inboxActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+                final View dialogView = inflater.inflate(R.layout.reply_to_message, null);
+                dialogBuilder.setView(dialogView);
+
+                final EditText receiverName = (EditText) dialogView.findViewById(R.id.editText2);
+                final EditText messageBody = (EditText) dialogView.findViewById(R.id.editText3);
+                final Button buttonSend = (Button) dialogView.findViewById(R.id.text_mess);
+
+
+                dialogBuilder.setTitle("Send Message");
+                final AlertDialog d = dialogBuilder.create();
+                d.show();
+
+                buttonSend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        receiveName = receiverName.getText().toString();
+                        String message = messageBody.getText().toString();
+                        HashMap postData = new HashMap();
+                        postData.put("sender_id",loginActivity.user_id);
+                        postData.put("receiver_name",receiveName);
+                        postData.put("body",message);
+                        PostResponseAsyncTask task = new PostResponseAsyncTask(inboxActivity.this, postData);
+                        task.execute("http://10.0.2.2/PHASE-3/PHASE-3/php_files/mobile_send.php");
+                        d.dismiss();
+                    }
+                });
+            }
+        });
+
     }
 
     @Override
@@ -85,6 +123,13 @@ public class inboxActivity extends AppCompatActivity implements AsyncResponse{
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        if(response.equals("Message Sent")) {
+            Toast.makeText(this, "Successfully", Toast.LENGTH_LONG).show();
+        }else if(response.equals("No User Found")){
+            Toast.makeText(this, response, Toast.LENGTH_LONG).show();
+        }
+
     }
 
     private void getMessages(JSONArray j){
