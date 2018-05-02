@@ -7,17 +7,20 @@ import android.view.View;
 import android.widget.Button;
 
 public class first_queriesActivity extends AppCompatActivity {
-private Button first_buttom, sec_buttom, thir_buttom;
+private Button fir_buttom, sec_buttom, thr_buttom,for_buttom,fiv_buttom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_queries);
 
-        first_buttom = (Button) findViewById(R.id.button1);
+        fir_buttom = (Button) findViewById(R.id.button1);
         sec_buttom = (Button) findViewById(R.id.button2);
-        thir_buttom = (Button) findViewById(R.id.button3);
-        first_buttom.setOnClickListener(new View.OnClickListener() {
+        thr_buttom = (Button) findViewById(R.id.button3);
+        for_buttom = (Button) findViewById(R.id.button4);
+        fiv_buttom = (Button) findViewById(R.id.button5);
+
+        fir_buttom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(first_queriesActivity.this, Query_1.class);
@@ -33,10 +36,26 @@ private Button first_buttom, sec_buttom, thir_buttom;
             }
         });
 
-        thir_buttom.setOnClickListener(new View.OnClickListener() {
+        thr_buttom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(first_queriesActivity.this, Query_3.class);
+                startActivity(intent);
+            }
+        });
+
+        for_buttom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(first_queriesActivity.this, Query_4.class);
+                startActivity(intent);
+            }
+        });
+
+        fiv_buttom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(first_queriesActivity.this, Query_5.class);
                 startActivity(intent);
             }
         });
