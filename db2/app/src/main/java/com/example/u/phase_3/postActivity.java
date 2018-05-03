@@ -147,6 +147,7 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
         finish();
     }
 
+    // Logs out of app
     public void goto_log_out(){
         loginActivity.user_id = "";
         finish();
