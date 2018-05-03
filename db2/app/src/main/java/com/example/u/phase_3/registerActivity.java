@@ -18,13 +18,10 @@ public class registerActivity extends AppCompatActivity implements AsyncResponse
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        setTitle("REGISTRATION");
         user_name = (EditText) findViewById(R.id.usernameField);
         user_email = (EditText) findViewById(R.id.emailField);
         user_password = (EditText) findViewById(R.id.passwordField);
-        //btnlogin = (Button) findViewById(R.id.loginButton);
-
-
-
     }
 
     @Override

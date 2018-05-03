@@ -13,7 +13,9 @@
     <string name="logout">Logout</string>
 
     <string name="icon_chat">Chat</string>
-    <string name="icon_profile">profile</string>
+    <string name="icon_profile">Profile</string>
+    <string name="icon_home">Home</string>
+
 
     <string name="top">First Five Queries </string>
 

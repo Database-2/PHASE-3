@@ -1,5 +1,6 @@
 package com.example.u.phase_3;
 
+// Config class used for the json file table from the mobile_inbox.php page
 public class InboxConfig {
     //JSON URL
     public static final String DATA_URL = "http://10.0.2.2/PHASE-3/PHASE-3/php_files/inboxJson.php";

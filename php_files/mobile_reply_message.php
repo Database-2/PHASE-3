@@ -22,17 +22,11 @@ $sql = "INSERT INTO `message`(`sender_id`, `receiver_id`, `body`, `send_time`)
 
 if (mysqli_query($conn, $sql)) {
   // Close page and load inbox page
-  mysqli_close($conn);
   echo "Message Sent";
-  echo $sender_id;
-  echo $receiver_id;
-  echo $body;
+  mysqli_close($conn);
 } else {
   // Error message
   echo "Error, Message Not Sent";
-  echo $sender_id;
-  echo $receiver_id;
-  echo $body;
 }
 
 ?>
