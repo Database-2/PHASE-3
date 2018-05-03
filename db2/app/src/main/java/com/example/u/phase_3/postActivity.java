@@ -86,7 +86,6 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
                 postData.put("mobile", "android");
                 postData.put("uid",loginActivity.user_id);
                 postData.put("userpost",user_post.getText().toString());
-                //postData.put("pwd",user_password.getText().toString());
                 PostResponseAsyncTask task = new PostResponseAsyncTask(this, postData);
                 task.execute("http://10.0.2.2/PHASE-3/PHASE-3/php_files/home.php");
                 posts.clear();
@@ -104,12 +103,12 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            //go to lost and found
+
             case R.id.action_chat:
                 goto_chat();
                 return true;
             case R.id.logout:
-                //logout
+                goto_logout();
                 break;
 
         }
@@ -118,6 +117,10 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
 
     private void goto_chat() {
         Intent intent = new Intent(postActivity.this, inboxActivity.class);
+        startActivity(intent);
+    }
+    private void goto_logout() {
+        Intent intent = new Intent(postActivity.this, loginActivity.class);
         startActivity(intent);
     }
 }

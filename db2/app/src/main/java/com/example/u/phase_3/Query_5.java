@@ -53,7 +53,7 @@ public class Query_5 extends AppCompatActivity implements AsyncResponse {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,heroes);
         listView.setAdapter(arrayAdapter);
     }
-    
+
     public void helper(View v){
         HashMap postData = new HashMap();
         postData.put("submit","submit");

@@ -21,6 +21,6 @@
     <string name="first_query">The post that has the most number of likes.</string>
     <string name="second_query">Who has the most twitter followers?</string>
     <string name="third_query">Count the number that contains the keyword "flu"?</string>
-    <string name="four_query">Who has the most twitter followers?</string>
+    <string name="four_query">Find all the posts made by one person</string>
     <string name="five_query">Who twits the most in a year?</string>
 </resources>

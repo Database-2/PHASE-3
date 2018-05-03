@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,7 +16,6 @@ import java.util.HashMap;
 
 public class loginActivity extends AppCompatActivity implements AsyncResponse {
     private EditText user_name, user_password;
-    private Button btnlogin,btnsignup;
     public static String user_id;
 
     @Override
@@ -27,22 +25,19 @@ public class loginActivity extends AppCompatActivity implements AsyncResponse {
 
         user_name = (EditText) findViewById(R.id.usernameField);
         user_password = (EditText) findViewById(R.id.passwordField);
-        //btnlogin = (Button) findViewById(R.id.loginButton);
 
     }
 
     @Override
     public void processFinish(String result) {
-        //String user_id_REGEX = "[A-Za-z]{1,61} [0-9]";
-        //Log.e("uid",result);
+
         String s = result;
         String first_remove = result.replaceAll("success","");
         String second_remove = result.replaceAll("[0-9]","");
         user_id = first_remove;
         result = second_remove;
-       /// Integer num = Integer.valueOf(user_id);
         if(result.equals("success")) {
-            Toast.makeText(this, "Login Successfully " + s , Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Login Successfully ", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(loginActivity.this, postActivity.class);
             startActivity(intent);
         }else {
@@ -63,7 +58,6 @@ public class loginActivity extends AppCompatActivity implements AsyncResponse {
                 task.execute("http://10.0.2.2/PHASE-3/PHASE-3/php_files/login.php");
                 break;
             case R.id.signupButton:
-                // doSomething2();
                 goto_sign_up();
                 break;
         }

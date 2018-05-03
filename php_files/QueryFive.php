@@ -2,15 +2,15 @@
 include 'config.php';
   $year ="";
   $year_list="";
-   $return_arr_f = array();
-   $return_arr_e = array();
+  $return_arr_f = array();
+  // $return_arr_e = array();
   if(isset($_POST['submit'])){
       $year = $_POST['submit'];
     }
-    if(isset($_POST['yearlist'])){
+  if(isset($_POST['yearlist'])){
       //$year_list
-$year_list= $_POST['yearlist'];
-}
+    $year_list= $_POST['yearlist'];
+    }
         $sql = "SELECT username, COUNT(twitts.uid)
                 FROM `user`,`twitts` 
                 WHERE user.uid =  twitts.uid AND twitts.post_time LIKE '$year_list%'

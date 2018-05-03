@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Query_4">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/user_Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="21dp"
+        android:inputType="text"
+        android:hint="Please a username"
+        android:padding="30dp" />
+
+    <Button
+        android:id="@+id/post_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="117dp"
+        android:onClick="helper"
+        android:text="Enter" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_below="@id/post_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>
