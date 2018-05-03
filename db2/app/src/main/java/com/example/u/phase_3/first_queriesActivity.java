@@ -13,6 +13,7 @@ private Button fir_buttom, sec_buttom, thr_buttom,for_buttom,fiv_buttom;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_queries);
+        setTitle("What is trending?");
 
         fir_buttom = (Button) findViewById(R.id.button1);
         sec_buttom = (Button) findViewById(R.id.button2);
@@ -20,6 +21,7 @@ private Button fir_buttom, sec_buttom, thr_buttom,for_buttom,fiv_buttom;
         for_buttom = (Button) findViewById(R.id.button4);
         fiv_buttom = (Button) findViewById(R.id.button5);
 
+        //show the first query
         fir_buttom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,6 +30,7 @@ private Button fir_buttom, sec_buttom, thr_buttom,for_buttom,fiv_buttom;
             }
         });
 
+        //show the second query
         sec_buttom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,6 +39,7 @@ private Button fir_buttom, sec_buttom, thr_buttom,for_buttom,fiv_buttom;
             }
         });
 
+        //show to third query
         thr_buttom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,6 +48,7 @@ private Button fir_buttom, sec_buttom, thr_buttom,for_buttom,fiv_buttom;
             }
         });
 
+        //go to the fourth query
         for_buttom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +57,7 @@ private Button fir_buttom, sec_buttom, thr_buttom,for_buttom,fiv_buttom;
             }
         });
 
+        //go to the fifth query
         fiv_buttom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

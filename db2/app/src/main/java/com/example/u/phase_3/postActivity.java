@@ -132,12 +132,8 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
                 goto_chat();
                 return true;
             case R.id.logout:
-<<<<<<< HEAD
-                goto_logout();
-=======
                 //logout
                 goto_log_out();
->>>>>>> 46bc491b40346d15973175813f1c1a80d1e5aaba
                 break;
 
         }
@@ -154,10 +150,6 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
     public void goto_log_out(){
         loginActivity.user_id = "";
         finish();
-        Intent intent = new Intent(postActivity.this, loginActivity.class);
-        startActivity(intent);
-    }
-    private void goto_logout() {
         Intent intent = new Intent(postActivity.this, loginActivity.class);
         startActivity(intent);
     }

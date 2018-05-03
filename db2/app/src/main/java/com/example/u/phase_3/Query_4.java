@@ -26,15 +26,17 @@ public class Query_4 extends AppCompatActivity implements AsyncResponse {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query_4);
+        setTitle("Fourth Query");
 
         username = (EditText) findViewById(R.id.user_Text);
         listView = (ListView) findViewById(R.id.listView);
     }
+
+    //display
     @Override
     public void processFinish(String result) {
         if(result.equals("No result")) {
             Toast.makeText(this, result, Toast.LENGTH_LONG).show();
-            //listView.setEmptyView(findViewById(R.id.emptyElement));
             username.setText("");
         } else {
             try {
@@ -44,17 +46,20 @@ public class Query_4 extends AppCompatActivity implements AsyncResponse {
             }
         }
     }
+
+    //return jsonobject
     private void getPosts(String j) throws JSONException{
         JSONArray jsonArray = new JSONArray(j);
-        String[] heroes = new String[jsonArray.length()];
+        String[] four_arr = new String[jsonArray.length()];
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
-            heroes[i] = obj.getString("body");
+            four_arr[i] = obj.getString("body");
         }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,heroes);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,four_arr);
         listView.setAdapter(arrayAdapter);
     }
 
+    //sends the user input to php
     public void helper(View v){
         HashMap postData = new HashMap();
         postData.put("submit_search","submit_search");

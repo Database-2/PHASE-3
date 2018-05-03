@@ -33,9 +33,6 @@ include 'config.php';
       //  exit();
    }else{
       echo "Please select another year";
-     //$row_array_ee['username_eer']= array("one");
-     //array_push($return_arr_e,$row_array_ee);
-    //echo json_encode($return_arr_e);
 
     }           
 ?>

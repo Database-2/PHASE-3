@@ -25,19 +25,19 @@ public class loginActivity extends AppCompatActivity implements AsyncResponse {
         setTitle("LOGIN");
         user_name = (EditText) findViewById(R.id.usernameField);
         user_password = (EditText) findViewById(R.id.passwordField);
-<<<<<<< HEAD
-
-=======
->>>>>>> 46bc491b40346d15973175813f1c1a80d1e5aaba
     }
 
+    //return echo from the login.php
     @Override
     public void processFinish(String result) {
-<<<<<<< HEAD
+        /*first_remove is used as a temp variable to replace the return echo from login.php
+        because the echo returns success and user id together. using replaceall to remove
+        success from the string and assigned user id to first_remove.after user_id is static
+        variable that first_remove is assigned to.
 
-=======
->>>>>>> 46bc491b40346d15973175813f1c1a80d1e5aaba
-        String s = result;
+        second_remove is used as a temp variable to remove user id like we did for first_remove.
+        in order for us to able go to the postActivity.
+        */
         String first_remove = result.replaceAll("success","");
         String second_remove = result.replaceAll("[0-9]","");
         user_id = first_remove;
@@ -55,6 +55,7 @@ public class loginActivity extends AppCompatActivity implements AsyncResponse {
     public void ButtonOnClick(View v) {
         switch (v.getId()) {
             case R.id.loginButton:
+                /*send both inputs to login.php checks it*/
                 HashMap postData = new HashMap();
                 postData.put("login","login");
                 postData.put("mobile", "android");
@@ -68,6 +69,8 @@ public class loginActivity extends AppCompatActivity implements AsyncResponse {
                 break;
         }
     }
+
+    //menu bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_menu, menu);
@@ -84,11 +87,13 @@ public class loginActivity extends AppCompatActivity implements AsyncResponse {
         return super.onOptionsItemSelected(item);
     }
 
+    //go to the first five queries
     public void goto_top(){
         Intent intent = new Intent(loginActivity.this, first_queriesActivity.class);
         startActivity(intent);
     }
 
+    //go to the sign up activity
     public void goto_sign_up(){
         Intent intent = new Intent(loginActivity.this, registerActivity.class);
         startActivity(intent);

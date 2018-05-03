@@ -25,6 +25,8 @@ public class Query_5 extends AppCompatActivity implements AsyncResponse {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query_5);
+        setTitle("Fifth Query");
+
         year_post = (EditText) findViewById(R.id.user_Text);
         listView = (ListView) findViewById(R.id.listView);
 
@@ -33,7 +35,6 @@ public class Query_5 extends AppCompatActivity implements AsyncResponse {
     public void processFinish(String result) {
         if(result.equals("Please select another year")) {
             Toast.makeText(this, result, Toast.LENGTH_LONG).show();
-            //listView.setEmptyView(findViewById(R.id.emptyElement));
             year_post.setText("");
         } else {
             try {
@@ -45,15 +46,16 @@ public class Query_5 extends AppCompatActivity implements AsyncResponse {
     }
     private void getPosts(String j) throws JSONException{
         JSONArray jsonArray = new JSONArray(j);
-        String[] heroes = new String[jsonArray.length()];
+        String[] fif_arr = new String[jsonArray.length()];
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
-            heroes[i] = obj.getString("username");
+            fif_arr[i] = obj.getString("username");
         }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,heroes);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,fif_arr);
         listView.setAdapter(arrayAdapter);
     }
 
+    //sends the user input
     public void helper(View v){
         HashMap postData = new HashMap();
         postData.put("submit","submit");

@@ -14,7 +14,7 @@
         android:layout_marginTop="21dp"
         android:inputType="number"
         android:maxLength="4"
-        android:hint="Please a year"
+        android:hint="Please enter a year Ex. 2018"
         android:padding="30dp" />
 
     <Button
