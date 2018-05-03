@@ -33,17 +33,34 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+        setTitle("HOME");
         user_post = (EditText) findViewById(R.id.user_Text);
         listView = (ListView)findViewById(R.id.postList);
         posts = new ArrayList<PostItem>();
 
+        // Checks if the user is still logged in
+        if(loginActivity.user_id.equals("")){
+            goto_log_out();
+        }
+
+        // Gets the data for all twitts by all users
         HashMap postData = new HashMap();
         PostResponseAsyncTask task = new PostResponseAsyncTask(postActivity.this, postData);
         task.execute("http://10.0.2.2/PHASE-3/PHASE-3/php_files/post.php");
     }
 
     @Override
+    public void onResume(){
+        super.onResume();
+        // Checks if the user is still logged in
+        if(loginActivity.user_id.equals("")){
+            goto_log_out();
+        }
+    }
+
+    @Override
     public void processFinish(String result) {
+        // If the data echoed is a json file pass table to function
         j = null;
         try {
             j = new JSONObject(result);
@@ -53,6 +70,7 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
             e.printStackTrace();
         }
 
+        // If data is a string display if the page php code ran successfully or not
         if(result.equals("success")) {
             Toast.makeText(this, "Successfully", Toast.LENGTH_LONG).show();
                 user_post.setText("");
@@ -61,6 +79,9 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
         }
     }
 
+    // Takes json file with a table and converts tables data into a PostItem
+    //   which is a custom class item that holds a twitts data and is used to
+    //   display the post onto the screen.
     private void getPosts(JSONArray j){
         for(int i=0;i<j.length();i++){
             try {
@@ -78,6 +99,8 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
         listView.setAdapter(adapter);
     }
 
+    // If the post button is clicked then the editText field is sent as the body of a
+    //   twitt, as well as the users data which is saved durring the login page.
     public void PostOnClick(View v) {
         switch (v.getId()) {
             case R.id.post_btn:
@@ -101,6 +124,7 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
         return true;
     }
 
+    // Menu in the top right corner
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
@@ -108,15 +132,29 @@ public class postActivity extends AppCompatActivity implements AsyncResponse {
                 goto_chat();
                 return true;
             case R.id.logout:
+<<<<<<< HEAD
                 goto_logout();
+=======
+                //logout
+                goto_log_out();
+>>>>>>> 46bc491b40346d15973175813f1c1a80d1e5aaba
                 break;
 
         }
         return super.onOptionsItemSelected(item);
     }
 
+    // Goes to the inbox page.
     private void goto_chat() {
         Intent intent = new Intent(postActivity.this, inboxActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goto_log_out(){
+        loginActivity.user_id = "";
+        finish();
+        Intent intent = new Intent(postActivity.this, loginActivity.class);
         startActivity(intent);
     }
     private void goto_logout() {

@@ -22,15 +22,21 @@ public class loginActivity extends AppCompatActivity implements AsyncResponse {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        setTitle("LOGIN");
         user_name = (EditText) findViewById(R.id.usernameField);
         user_password = (EditText) findViewById(R.id.passwordField);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46bc491b40346d15973175813f1c1a80d1e5aaba
     }
 
     @Override
     public void processFinish(String result) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46bc491b40346d15973175813f1c1a80d1e5aaba
         String s = result;
         String first_remove = result.replaceAll("success","");
         String second_remove = result.replaceAll("[0-9]","");
@@ -70,7 +76,6 @@ public class loginActivity extends AppCompatActivity implements AsyncResponse {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            //go to lost and found
             case R.id.action_top:
                 goto_top();
                 return true;
